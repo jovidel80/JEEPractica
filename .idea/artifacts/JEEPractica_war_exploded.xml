@@ -6,6 +6,10 @@
         <element id="directory" name="classes">
           <element id="module-output" name="JEEPractica" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.xerial:sqlite-jdbc:3.7.2" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/jeepractica/META-INF/MANIFEST.MF" />
