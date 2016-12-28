@@ -2,9 +2,12 @@
  * Created by capitanjovi on 26/12/16.
  */
 function validacion() {
-    if (document.forms[0].isbn.value == "") {
-        alert("Debe ingresar al menos el ISBN");   
+    var isbn = document.getElementById("isbn");
+    var miFormulario = document.getElementById("miformulario");
+    if (isbn.value == "") {
+        alert("Debe ingresar al menos el ISBN");
+        return false;
     } else {
-        document.forms[0].submit();
+        miFormulario.submit();
     }
 }

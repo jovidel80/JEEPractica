@@ -14,16 +14,24 @@
     <title>Formulario Libro</title>
 </head>
 <body>
-    <form action="">
+    <form action="" id="miformulario" onsubmit="validacion()">
         <fieldset>
             <legend>Formulario Alta Libro</legend>
-            ISBN:
-            <input type="text" name="isbn"><br>
-            Título:
-            <input type="text" name="titulo"><br>
-            Categoría:
-            <input type="text" name="categoria"><br>
-            <input type="button" value="Insertar" onclick="validacion()">
+            <p>
+                <label for="isbn">ISBN:</label>
+                <input type="text" name="isbn" id="isbn">
+            </p>
+            <p>
+                <label for="titulo">Título:</label>
+                <input type="text" name="titulo" id="titulo">
+            </p>
+            <p>
+                <label for="categoria">Categoría:</label>
+                <input type="text" name="categoria" id="categoria">
+            </p>
+            <p>
+                <input type="submit" value="Insertar">
+            </p>
         </fieldset>
     </form>
 </body>
