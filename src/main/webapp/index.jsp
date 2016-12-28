@@ -9,13 +9,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <script type="text/javascript" src="js/phaser.min.js"></script>
-    <script type="text/javascript" src="js/clickOnImage.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/clickOnImage.css">
-    <title>Click On Image</title>
+    <script type="text/javascript" src="js/validaciones.js"></script>
+    <link rel="stylesheet" href="css/estilo.css">
+    <title>Formulario Libro</title>
 </head>
 <body>
-<div id="image"></div>
+    <form action="">
+        <fieldset>
+            <legend>Formulario Alta Libro</legend>
+            ISBN:
+            <input type="text" name="isbn"><br>
+            Título:
+            <input type="text" name="titulo"><br>
+            Categoría:
+            <input type="text" name="categoria"><br>
+            <input type="button" value="Insertar" onclick="validacion()">
+        </fieldset>
+    </form>
 </body>
 </html>
