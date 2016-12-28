@@ -14,7 +14,7 @@
     <title>Formulario Libro</title>
 </head>
 <body>
-    <form action="" id="miformulario" onsubmit="validacion()">
+    <form action="FormularioInsertarLibro.jsp" id="miformulario" onsubmit="validacion()">
         <fieldset>
             <legend>Formulario Alta Libro</legend>
             <p>

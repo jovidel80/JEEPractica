@@ -8,7 +8,7 @@
     <name>jeepractica Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
-            <!--Testing-->
+        <!--Testing-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -28,6 +28,19 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.192</version>
+        </dependency>
+
+        <!--Servlet API-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
         </dependency>
 
     </dependencies>
