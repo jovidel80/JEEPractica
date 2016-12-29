@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+    <form-beans>
+        <form-bean name="userForm" type="com.joseoliveros.struts1.form.UserForm"/>
+    </form-beans>
+
+    <action-mappings>
+        <action path="/LoginPage"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/struts1Login.jsp"/>
+
+        <action path="/Login"
+                type="com.joseoliveros.struts1.action.UserAction"
+                name="userForm"
+                validate="true"
+                input="/struts1Login.jsp">
+
+            <forward name="success" path="/struts1Welcome.jsp"/>
+        </action>
+    </action-mappings>
+
+    <message-resources parameter="com.joseoliveros.struts.properties.Common" />
+</struts-config>
