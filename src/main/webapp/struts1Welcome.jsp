@@ -15,7 +15,7 @@
     <h1>
         Welcome <bean:write name="userForm" property="username"/>
         <%--Valor <bean:write name="userForm" property="valor"/>--%>
-        <br>
+        <br><br>
         <a href="/LoginPage.do"><button>Volver</button></a>
     </h1>
 </body>

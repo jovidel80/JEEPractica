@@ -1,4 +1,5 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
+<%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
 <%--
   Created by IntelliJ IDEA.
   User: joliveros
@@ -12,7 +13,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Struts html:text example</h1>
+<h1>Struts 1 example</h1>
 
 <html:form action="/Login">
     <div style="color: red">
@@ -20,15 +21,15 @@
     </div>
     <div style="padding: 26px">
         <div style="float:left;padding-right:8px;">
-            UserName
+            <bean:message key="label.common.name"/>
         </div>
         <html:text property="username" size="20" maxlength="20"/>
     </div>
     <div style="padding:16px">
         <div style="float:left;padding-right:8px;">
-            <html:submit>Submit</html:submit>
+            <html:submit><bean:message key="label.common.button.submit"/></html:submit>
         </div>
-        <html:reset>Reset</html:reset>
+        <html:reset><bean:message key="label.common.button.reset"/></html:reset>
     </div>
 </html:form>
 </body>
