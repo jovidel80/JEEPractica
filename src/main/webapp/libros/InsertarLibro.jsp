@@ -22,13 +22,13 @@
     try {
         Class.forName("org.h2.Driver");
         connection = DriverManager.getConnection(
-                "jdbc:h2:C:/Users/joliveros/IdeaProjects/JEEPractica/src/main/webapp/WEB-INF/db/jeepractica",
+                "jdbc:h2:/Users/capitanjovi/IdeaProjects/JEEPractica/src/main/webapp/WEB-INF/db/jeepractica",
                 "jovi",
                 "jovi");
         statement = connection.createStatement();
         String query = "INSERT INTO LIBROS(ISBN, TITULO, CATEGORIA) VALUES ('" + isbn + "', '" + titulo + "', '" + categoria + "')";
         filas = statement.executeUpdate(query);
-//        response.sendRedirect("MostrarLibros.jsp");
+        response.sendRedirect("MostrarLibros.jsp");
     } catch (ClassNotFoundException e) {
         System.out.println("Error en la carga del driver"
                 + e.getMessage());
