@@ -9,12 +9,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="text/javascript" src="js/validaciones.js"></script>
-    <link rel="stylesheet" href="css/estilo.css">
+    <script type="text/javascript" src="../js/libros/validaciones.js"></script>
+    <link rel="stylesheet" href="../css/libros/estilo.css">
     <title>Formulario Libro</title>
 </head>
 <body>
-    <form action="FormularioInsertarLibro.jsp" id="miformulario" onsubmit="validacion()">
+    <form action="InsertarLibro.jsp" id="miformulario" onsubmit="validacion()">
         <fieldset>
             <legend>Formulario Alta Libro</legend>
             <p>

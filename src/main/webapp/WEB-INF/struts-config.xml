@@ -19,9 +19,9 @@
                 type="com.joseoliveros.struts1.action.UserAction"
                 name="userForm"
                 validate="true"
-                input="/struts1Login.jsp">
+                input="/struts1/struts1Login.jsp">
 
-            <forward name="success" path="/struts1Welcome.jsp"/>
+            <forward name="success" path="/struts1/struts1Welcome.jsp"/>
         </action>
     </action-mappings>
 

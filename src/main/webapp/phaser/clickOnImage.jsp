@@ -10,9 +10,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="js/phaser.min.js"></script>
-    <script type="text/javascript" src="js/clickOnImage.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/clickOnImage.css">
+    <script type="text/javascript" src="../js/phaser/phaser.min.js"></script>
+    <script type="text/javascript" src="../js/phaser/clickOnImage.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/phaser/clickOnImage.css">
     <title>Click On Image</title>
 </head>
 <body>

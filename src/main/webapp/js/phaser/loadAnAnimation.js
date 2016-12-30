@@ -4,7 +4,7 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'image', {preload: preload, create: create});
 
 function preload() {
-    game.load.atlasJSONHash('bot', 'assets/loadAnAnimation/running_bot.png', 'assets/loadAnAnimation/running_bot.json')
+    game.load.atlasJSONHash('bot', '../assets/phaser/loadAnAnimation/running_bot.png', '../assets/phaser/loadAnAnimation/running_bot.json')
 }
 
 function create() {
