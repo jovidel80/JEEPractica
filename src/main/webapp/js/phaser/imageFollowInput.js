@@ -4,7 +4,7 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'image', {preload: preload, create: create, update: update, render: render});
 
 function preload() {
-    game.load.image('firstaid', 'assets/firstaid.png');
+    game.load.image('firstaid', '../assets/phaser/firstaid.png');
 }
 
 var sprite;

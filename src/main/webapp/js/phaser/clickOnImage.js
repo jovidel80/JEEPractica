@@ -7,7 +7,7 @@ var text;
 var counter = 0;
 
 function preload() {
-    game.load.image('simpsons', 'assets/los-simpson.jpg');
+    game.load.image('simpsons', '../assets/phaser/los-simpson.jpg');
 }
 
 function create() {

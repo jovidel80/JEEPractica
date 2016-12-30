@@ -4,7 +4,7 @@
 var game = new Phaser.Game(1200, 433, Phaser.AUTO, 'image', {preload: preload, create: create});
 
 function preload() {
-    game.load.image('simpsons', 'assets/los-simpson.jpg');
+    game.load.image('simpsons', '../assets/phaser/los-simpson.jpg');
 }
 
 function create() {

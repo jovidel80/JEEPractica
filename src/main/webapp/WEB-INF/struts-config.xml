@@ -13,7 +13,7 @@
     <action-mappings>
         <action path="/LoginPage"
                 type="org.apache.struts.actions.ForwardAction"
-                parameter="/struts1Login.jsp"/>
+                parameter="/struts1/struts1Login.jsp"/>
 
         <action path="/Login"
                 type="com.joseoliveros.struts1.action.UserAction"

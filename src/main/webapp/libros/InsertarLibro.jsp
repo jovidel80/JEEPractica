@@ -22,7 +22,7 @@
     try {
         Class.forName("org.h2.Driver");
         connection = DriverManager.getConnection(
-                "jdbc:h2:C:/Users/joliveros/IdeaProjects/JEEPractica/jeepractica",
+                "jdbc:h2:C:/Users/joliveros/IdeaProjects/JEEPractica/src/main/webapp/WEB-INF/db/jeepractica",
                 "jovi",
                 "jovi");
         statement = connection.createStatement();
