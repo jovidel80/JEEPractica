@@ -1,4 +1,5 @@
-<%@ page import="java.sql.*" %><%--
+<%@ page import="java.sql.*" %>
+<%@ page import="com.joseoliveros.libros.database.DataBaseHelper" %><%--
   Created by IntelliJ IDEA.
   User: joliveros
   Date: 30/12/2016
@@ -16,52 +17,45 @@
 </head>
 <body>
 <div class="container">
+    <select name="categoria" id="categoria">
+        <option value="seleccionar">Seleccionar</option>
+
+        <%
+            ResultSet rs = null;
+
+            try {
+                String consultaSQL = "SELECT DISTINCT(categoria) FROM LIBROS";
+                DataBaseHelper helper = new DataBaseHelper();
+                rs = helper.seleccionarRegistros(consultaSQL);
+                while (rs.next()) { %>
+        <option value="<%=rs.getString("categoria")%>"><%=rs.getString("categoria")%></option>
+
+        <% } %>
+    </select>
+    <br>
     <%
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet rs = null;
+        consultaSQL = "SELECT * FROM LIBROS";
+        rs = helper.seleccionarRegistros(consultaSQL);
+        while (rs.next()) { %>
 
-        try {
-            Class.forName("org.h2.Driver");
-            connection = DriverManager.getConnection("jdbc:h2:/Users/capitanjovi/IdeaProjects/JEEPractica/src/main/webapp/WEB-INF/db/jeepractica", "jovi", "jovi");
-            statement = connection.createStatement();
-            String query = "SELECT isbn, titulo, categoria FROM libros";
-            rs = statement.executeQuery(query);
-
-            while (rs.next()) { %>
     <%=rs.getString("isbn")%>
     <%=rs.getString("titulo")%>
     <%=rs.getString("categoria")%>
     <br>
-    <% }
-    } catch (ClassNotFoundException e) {
-        System.out.println("Error en la carga del driver");
-    } catch (SQLException e) {
-        System.out.println("Error accediendo a la base de datos"
-                + e.getMessage());
-    } finally {
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException e) {
-                System.out.println("Error cerrando el resultset" + e.getMessage());
+    <%
+            }
+        } catch (SQLException e) {
+            System.out.println("Error accediendo a la base de datos"
+                    + e.getMessage());
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    System.out.println("Error cerrando el resultset" + e.getMessage());
+                }
             }
         }
-        if (statement != null) {
-            try {
-                statement.close();
-            } catch (SQLException e) {
-                System.out.println("Error cerrando la sentencia" + e.getMessage());
-            }
-        }
-        if (connection != null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                System.out.println("Error cerrando la conexion" + e.getMessage());
-            }
-        }
-    }
     %>
     <a href="FormularioInsertarLibro.jsp">
         <button>Insertar Libro</button>

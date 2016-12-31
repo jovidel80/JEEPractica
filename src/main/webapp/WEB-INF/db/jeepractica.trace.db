@@ -2068,3 +2068,6 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/capit
 	at org.h2.mvstore.FileStore.open(FileStore.java:172)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
 	... 48 more
+2016-12-31 13:34:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: El objeto ya está cerrado
+The object is already closed [90007-192]

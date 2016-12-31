@@ -1,7 +1,8 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.SQLException" %><%--
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="com.joseoliveros.libros.database.DataBaseHelper" %><%--
   Created by IntelliJ IDEA.
   User: joliveros
   Date: 28/12/2016
@@ -14,45 +15,11 @@
     String titulo = request.getParameter("titulo");
     String categoria = request.getParameter("categoria");
 
-    Connection connection = null;
-    Statement statement = null;
+    String consultaSQL = "INSERT INTO LIBROS(ISBN, TITULO, CATEGORIA) VALUES ('" + isbn + "', '" + titulo + "', '" + categoria + "')";
 
-    int filas = 0;
-
-    try {
-        Class.forName("org.h2.Driver");
-        connection = DriverManager.getConnection(
-                "jdbc:h2:/Users/capitanjovi/IdeaProjects/JEEPractica/src/main/webapp/WEB-INF/db/jeepractica",
-                "jovi",
-                "jovi");
-        statement = connection.createStatement();
-        String query = "INSERT INTO LIBROS(ISBN, TITULO, CATEGORIA) VALUES ('" + isbn + "', '" + titulo + "', '" + categoria + "')";
-        filas = statement.executeUpdate(query);
-        response.sendRedirect("MostrarLibros.jsp");
-    } catch (ClassNotFoundException e) {
-        System.out.println("Error en la carga del driver"
-                + e.getMessage());
-    } catch (SQLException e) {
-        System.out.println("Error accediendo a la base de datos"
-                + e.getMessage());
-    } finally {
-        if (statement != null) {
-            try {
-                statement.close();
-            } catch (SQLException e) {
-                System.out.println("Error cerrando la sentencia" +
-                        e.getMessage());
-            }
-        }
-        if (connection != null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                System.out.println("Error cerrando la conexion" +
-                        e.getMessage());
-            }
-        }
-    }
+    DataBaseHelper db = new DataBaseHelper();
+    int filas = db.modificarRegistro(consultaSQL);
+    response.sendRedirect("MostrarLibros.jsp");
 %>
 <html>
 <head>

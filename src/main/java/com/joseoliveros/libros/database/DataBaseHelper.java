@@ -16,7 +16,7 @@ public class DataBaseHelper {
 
         try {
             Class.forName(DRIVER);
-            conexion = DriverManager.getConnection(DRIVER, USER, PASSWORD);
+            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
             sentencia = conexion.createStatement();
             filasAfectadas = sentencia.executeUpdate(consultaSQL);
         } catch (ClassNotFoundException e) {
@@ -49,7 +49,7 @@ public class DataBaseHelper {
 
         try {
             Class.forName(DRIVER);
-            conexion = DriverManager.getConnection(DRIVER, USER, PASSWORD);
+            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
             sentencia = conexion.createStatement();
             filas = sentencia.executeQuery(consultaSQL);
         } catch (ClassNotFoundException e) {
