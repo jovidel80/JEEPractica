@@ -1,6 +1,6 @@
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="com.joseoliveros.libros.database.DataBaseHelper" %>
-<%@ page import="javafx.scene.shape.HLineTo" %><%--
+<%@ page import="com.joseoliveros.libros.model.Libro" %>
+<%@ page import="java.util.List" %>
+<%--
   Created by IntelliJ IDEA.
   User: joliveros
   Date: 26/12/2016
@@ -19,11 +19,6 @@
     <link rel="stylesheet" href="../css/libros/estilo.css">
     <title>Formulario Libro</title>
 </head>
-<%
-    DataBaseHelper helper = new DataBaseHelper();
-    String consultaSQL = "SELECT DISTINCT (CATEGORIA) FROM LIBROS";
-    ResultSet rs = helper.seleccionarRegistros(consultaSQL);
-%>
 <body>
 <div class="container">
     <form action="InsertarLibro.jsp" id="miformulario" onsubmit="return validacion()" method="get">
@@ -42,10 +37,10 @@
                 <select name="categoria" id="categoria">
                     <option value="seleccionar">Seleccionar</option>
                     <%
-                        while (rs.next()) { %>
-                    <option value="<%=rs.getString("categoria")%>"><%=rs.getString("categoria")%></option>
-                      <%  }
-                    %>
+                        List<String> listaCategorias = Libro.buscarTodasLasCategorias();
+                        for (String categoria: listaCategorias) { %>
+                    <option value="<%=categoria%>"><%=categoria%></option>
+                      <%  } %>
                 </select>
             </p>
             <p>

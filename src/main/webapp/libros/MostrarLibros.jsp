@@ -1,5 +1,6 @@
-<%@ page import="java.sql.*" %>
-<%@ page import="com.joseoliveros.libros.database.DataBaseHelper" %><%--
+<%@ page import="com.joseoliveros.libros.model.Libro" %>
+<%@ page import="java.util.List" %>
+<%--
   Created by IntelliJ IDEA.
   User: joliveros
   Date: 30/12/2016
@@ -21,42 +22,22 @@
         <option value="seleccionar">Seleccionar</option>
 
         <%
-            ResultSet rs = null;
-
-            try {
-                String consultaSQL = "SELECT DISTINCT(categoria) FROM LIBROS";
-                DataBaseHelper helper = new DataBaseHelper();
-                rs = helper.seleccionarRegistros(consultaSQL);
-                while (rs.next()) { %>
-        <option value="<%=rs.getString("categoria")%>"><%=rs.getString("categoria")%></option>
+            List<String> listaCategorias = Libro.buscarTodasLasCategorias();
+            for (String categoria: listaCategorias) { %>
+        <option value="<%=categoria%>"><%=categoria%></option>
 
         <% } %>
     </select>
     <br>
     <%
-        consultaSQL = "SELECT * FROM LIBROS";
-        rs = helper.seleccionarRegistros(consultaSQL);
-        while (rs.next()) { %>
-
-    <%=rs.getString("isbn")%>
-    <%=rs.getString("titulo")%>
-    <%=rs.getString("categoria")%>
+        List<Libro> listaLibros = Libro.buscarTodosLosLibros();
+        for (Libro libro: listaLibros) { %>
+    <%=libro.getIsbn()%>
+    <%=libro.getTitulo()%>
+    <%=libro.getCategoria()%>
     <br>
-    <%
-            }
-        } catch (SQLException e) {
-            System.out.println("Error accediendo a la base de datos"
-                    + e.getMessage());
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    System.out.println("Error cerrando el resultset" + e.getMessage());
-                }
-            }
-        }
-    %>
+    <% } %>
+    <br>
     <a href="FormularioInsertarLibro.jsp">
         <button>Insertar Libro</button>
     </a>

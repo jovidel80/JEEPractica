@@ -1,8 +1,5 @@
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="com.joseoliveros.libros.database.DataBaseHelper" %><%--
+<%@ page import="com.joseoliveros.libros.model.Libro" %>
+<%--
   Created by IntelliJ IDEA.
   User: joliveros
   Date: 28/12/2016
@@ -15,10 +12,9 @@
     String titulo = request.getParameter("titulo");
     String categoria = request.getParameter("categoria");
 
-    String consultaSQL = "INSERT INTO LIBROS(ISBN, TITULO, CATEGORIA) VALUES ('" + isbn + "', '" + titulo + "', '" + categoria + "')";
-
-    DataBaseHelper db = new DataBaseHelper();
-    int filas = db.modificarRegistro(consultaSQL);
+    Libro libro = new Libro(isbn, titulo, categoria);
+    libro.insertar();
+    
     response.sendRedirect("MostrarLibros.jsp");
 %>
 <html>

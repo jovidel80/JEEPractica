@@ -14,7 +14,7 @@ function validacion() {
     } else if (titulo.value == "") {
         alert("Debe ingresar el Título");
         return false;
-    } else if (categoria.value == "") {
+    } else if (categoria.value == "seleccionar") {
         alert("Debe ingresar la Categoría");
         return false;
     } else {
