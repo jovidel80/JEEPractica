@@ -25,5 +25,5 @@
         </action>
     </action-mappings>
 
-    <message-resources parameter="com.joseoliveros.struts1.properties.Common" />
+    <message-resources parameter="Common" />
 </struts-config>

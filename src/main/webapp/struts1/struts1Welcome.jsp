@@ -16,7 +16,7 @@
         Welcome <bean:write name="userForm" property="username"/>
         <%--Valor <bean:write name="userForm" property="valor"/>--%>
         <br><br>
-        <a href="/LoginPage.do"><button>Volver</button></a>
+        <a href="<%=request.getContextPath()%>/LoginPage.do"><button>Volver</button></a>
     </h1>
 </body>
 </html>
