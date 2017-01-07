@@ -4,16 +4,18 @@ import com.sun.rowset.CachedRowSetImpl;
 import org.apache.log4j.Logger;
 
 import javax.sql.rowset.CachedRowSet;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
 
 public class DataBaseHelper {
 
     private static final Logger log = Logger.getLogger(DataBaseHelper.class.getPackage().getName());
 
-    private static final String DRIVER = "org.h2.Driver";
-    private static final String URL = "jdbc:h2:/Users/capitanjovi/IdeaProjects/JEEPractica/src/main/webapp/WEB-INF/db/jeepractica";
-    private static final String USER = "jovi";
-    private static final String PASSWORD = "jovi";
+    private ClassLoader cl = Thread.currentThread().getContextClassLoader();
+    private Properties prop = null;
+    private InputStream inputStream = null;
 
     public int modificarRegistro(String consultaSQL) {
         Connection conexion = null;
@@ -21,14 +23,25 @@ public class DataBaseHelper {
         int filasAfectadas = 0;
 
         try {
-            Class.forName(DRIVER);
-            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
+            prop = new Properties();
+            inputStream = cl.getResourceAsStream("db.properties");
+            prop.load(inputStream);
+            Class.forName(prop.getProperty("H2_DB_DRIVER_CLASS"));
+            log.debug("Cargando Driver: " + prop.getProperty("H2_DB_DRIVER_CLASS"));
+            conexion = DriverManager.getConnection(prop.getProperty("H2_DB_URL"),
+                    prop.getProperty("H2_DB_USERNAME"),
+                    prop.getProperty("H2_DB_PASSWORD"));
+            log.debug("Haciendo conexión con la URL = " + prop.getProperty("H2_DB_URL"));
+            log.debug("Usuario y password correctos");
+            inputStream.close();
             sentencia = conexion.createStatement();
             filasAfectadas = sentencia.executeUpdate(consultaSQL);
         } catch (ClassNotFoundException e) {
             log.debug("Error cargando el driver: " + e.getMessage());
         } catch (SQLException e) {
             log.debug("Error de SQL: " + e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             if (sentencia != null) {
                 try {
@@ -56,8 +69,17 @@ public class DataBaseHelper {
         ResultSet rs = null;
 
         try {
-            Class.forName(DRIVER);
-            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
+            inputStream = cl.getResourceAsStream("db.properties");
+            prop = new Properties();
+            prop.load(inputStream);
+            Class.forName(prop.getProperty("H2_DB_DRIVER_CLASS"));
+            log.debug("Cargando Driver: " + prop.getProperty("H2_DB_DRIVER_CLASS"));
+            conexion = DriverManager.getConnection(prop.getProperty("H2_DB_URL"),
+                    prop.getProperty("H2_DB_USERNAME"),
+                    prop.getProperty("H2_DB_PASSWORD"));
+            log.debug("Haciendo conexión con la URL = " + prop.getProperty("H2_DB_URL"));
+            log.debug("Usuario y password correctos");
+            inputStream.close();
             sentencia = conexion.createStatement();
             rs = sentencia.executeQuery(consultaSQL);
             CachedRowSet rowSet = new CachedRowSetImpl();
@@ -67,8 +89,9 @@ public class DataBaseHelper {
             log.debug("Error cargando el driver: " + e.getMessage());
         } catch (SQLException e) {
             log.debug("Error de SQL " + e.getMessage());
-        } 
-        finally {
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
             if (sentencia != null) {
                 try {
                     sentencia.close();

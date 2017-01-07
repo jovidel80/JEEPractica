@@ -21,9 +21,11 @@
     </div>
     <div style="padding: 26px">
         <div style="float:left;padding-right:8px;">
-            <bean:message key="label.common.name"/>
+            <bean:message key="label.common.name"/> <br>
+            <bean:message key="label.common.password"/>
         </div>
-        <html:text property="username" size="20" maxlength="20"/>
+        <html:text property="username" size="20" maxlength="20"/><br>
+        <html:text property="password" size="10" maxlength="10"/>
     </div>
     <div style="padding:16px">
         <div style="float:left;padding-right:8px;">
